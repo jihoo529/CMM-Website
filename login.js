@@ -48,12 +48,5 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
-router.get('/signup_page', (req, res) => {
-    //console.log(pathname);
-    res.sendFile(pathname + "public/signup.html");
-})
-
-router.post('/signup')
-
 
 module.exports = router;
