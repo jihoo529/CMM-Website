@@ -6,7 +6,8 @@ const { db } = require(pathname + "etc/mysql");
 const session = require('express-session');
 
 router.get('/', (req, res) => {
-  res.sendFile(pathname + "public/login.html");
+  //res.sendFile(pathname + "public/login.html");
+  res.redirect('/login');
 })
 
 router.post('/login', express.urlencoded({ extended: true }), (req, res) => {
@@ -20,20 +21,22 @@ router.post('/login', express.urlencoded({ extended: true }), (req, res) => {
       console.log(err);
       return;
     }
+    
     console.log(results[0])
-    console.log(results)
-
     if (results[0]) {
-      if (results[0].PASSWORD == loginPW) {
+      if (results[0].password == loginPW) {
+        console.log("yes");
         req.session.loginName = loginName;
         req.session.userId = results[0].ID;
         //res.sendFile(pathname + "public/index.html");
-        res.redirect(`/display/${loginName}`);
+        //res.redirect(`/display/${loginName}`);
         //res.send(response);
+        res.status(200).send('Success');
         return;
       }
     }
-    res.sendFile(pathname + "public/login_fail.html");
+    //res.sendFile(pathname + "public/login_fail.html");
+    res.status(404).send('404 Not Found');
   });
 })
 
