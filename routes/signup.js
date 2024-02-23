@@ -6,10 +6,6 @@ const { db } = require(pathname + "etc/mysql");
 const session = require('express-session');
 
 
-router.get('/signup_page', (req, res) => {
-    //res.sendFile(pathname + "public/signup.html");
-})
-
 router.post('/signup', express.urlencoded({ extended: true }), (req,res) =>{
     var signUpEmail = req.body.signupemail;
     var signUpName = req.body.signupName;
