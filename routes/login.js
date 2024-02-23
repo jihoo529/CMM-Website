@@ -6,12 +6,10 @@ const { db } = require(pathname + "etc/mysql");
 const session = require('express-session');
 
 router.get('/', (req, res) => {
-  //res.sendFile(pathname + "public/login.html");
   res.redirect('/login');
 })
 
 router.post('/login', express.urlencoded({ extended: true }), (req, res) => {
-  var response = "<p>" + req.body.loginName + "</p><p>" + req.body.loginPassword + "</p>";
   var loginName = req.body.loginName;
   var loginPW = req.body.loginPassword;
   var query = `SELECT * FROM USERS WHERE NAME = ?`;
@@ -25,26 +23,19 @@ router.post('/login', express.urlencoded({ extended: true }), (req, res) => {
     console.log(results[0])
     if (results[0]) {
       if (results[0].password == loginPW) {
-        console.log("yes");
         req.session.loginName = loginName;
         req.session.userId = results[0].ID;
-        //res.sendFile(pathname + "public/index.html");
-        //res.redirect(`/display/${loginName}`);
-        //res.send(response);
         res.status(200).send('Success');
         return;
       }
     }
-    //res.sendFile(pathname + "public/login_fail.html");
     res.status(404).send('404 Not Found');
   });
 })
 
 router.get('/logout', (req, res) => {
-  console.log("logout");
   req.session.loginName = null;
   req.session.userId = null;
-  //res.send("Logout successfully");
   res.redirect('/');
 })
 module.exports = router;
