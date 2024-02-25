@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-var login_router = require('./routes/login');
-var signup_router = require('./routes/signup')
+var user_router = require('./routes/user');
+var content_router = require('./routes/content')
 //var display_router = require('./routes/display');
 var session = require('express-session');
 
@@ -15,9 +15,8 @@ app.use(
   })
 );
 app.use(express.json());
-app.use('/', login_router);
-app.use('/', signup_router);
-//app.use('/display', display_router);
+app.use('/', user_router);
+app.use('/', content_router);
 
 var server = app.listen(8081, () => {
     var host = server.address().address;
