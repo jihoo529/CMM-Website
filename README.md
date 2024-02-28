@@ -1,12 +1,12 @@
-# HKU CMM Web Backend Mini-Project
+# HKU CMM Web Backend Project - CMM Website
 
-This mini-project aims to familiarize HKU CMM Web Backend team members with RESTful API development, CRUD operations, Node.js, and MySQL integration. The project involves creating a simple website where users can perform login, create text, edit text, delete text, and comment on texts.
+This project aims to familiarize HKU CMM Web Backend team members with RESTful API development, CRUD operations, Node.js, and MySQL integration. The project involves creating a simple website where users can perform login, create text, edit text, delete text, and comment on texts.
 
 ## Features
 User Registration and Authentication: Users can create an account and authenticate themselves to access the website's features.
-Text Creation: Authenticated users can create new text entries.
-Text Editing: Users can edit their own text entries.
-Text Deletion: Users can delete their own text entries.
+Content Creation: Authenticated users can create new text entries.
+Content Editing: Users can edit their own text entries.
+Content Deletion: Users can delete their own text entries.
 Commenting: Users can add comments to existing text entries.
 
 ## Technologies Used
